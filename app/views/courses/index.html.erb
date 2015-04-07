@@ -1,0 +1,32 @@
+<h2>課程列表</h2>
+<%=form_tag courses_path,method:"get" do%>
+<div>
+課程名稱<%=text_field_tag :name %>
+</div>
+<div>
+授課教師<%=text_field_tag :teacher %>
+</div>
+<div>
+上課地點<%=text_field_tag :classroom%>
+</div>
+<div>
+上課時間<%=text_field_tag :time %>
+</div>
+<div>
+學分數目<%=text_field_tag :credit %>
+</div>
+
+<%=submit_tag "搜尋"%>
+<%end%>
+<% @courses.each do|course|%>
+	<div>
+	<%= link_to course.name,course_path(course) %>
+	</div>
+	<div>
+	<%= link_to "編輯課程", edit_course_path(course) %>
+	</div>
+	<div>
+	<%= link_to "刪除課程", course_path(course),method:"delete"  %>
+	</div>
+
+<%end%>
